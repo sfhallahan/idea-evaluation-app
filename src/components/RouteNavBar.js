@@ -6,7 +6,8 @@ class RouteNavBar extends Component {
   render() {
     return (
       <Route path={this.props.href} exact children={({ match }) => (
-        <FlatButton {...this.props} active={ match ? true : false }>{ this.props.children }
+        <FlatButton {...this.props} active={ match ? true : false }
+        label = { this.props.label }>{ this.props.children }
         </FlatButton>
       )}/>
     );

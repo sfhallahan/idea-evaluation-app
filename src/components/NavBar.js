@@ -7,29 +7,32 @@ class NavBar extends Component {
 
   static muiName = 'FlatButton';
 
-  handleClick(e) {
-    this.props.onClick(e);
-  }
-
   render() {
     return (
     <AppBar
       title="ideaGen"
-      iconElementRight={
-        <div>
+      iconElementRight={this.props.childProps.userToken
+        ?  (<div>
+            <RouteNavBar
+              {...this.props}
+              onClick={this.props.onLogout}
+              label="Logout"
+            />
+        </div>)
+        : (<div>
           <RouteNavBar
             {...this.props}
-            onClick={this.handleClick}
+            onClick={this.props.onClick}
             label="Create Account"
             href="/create-account"
           />
           <RouteNavBar
             {...this.props}
-            onClick={this.handleClick}
+            onClick={this.props.onClick}
             label="Login"
             href="/login"
             />
-        </div>
+        </div>)
       }
     />
   );
